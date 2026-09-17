@@ -1,4 +1,4 @@
-import React, { Activity, useContext, useState } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import avatar from "../../assets/avatar_icon.png";
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,7 +9,7 @@ import { MdOutlineEdit } from "react-icons/md";
 import { API_PATHS } from '../../utils/apiPaths.ts';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000" as string;
+import {backendUrl} from '../../App.tsx'
 axios.defaults.withCredentials = true;
 
 const ProfileInfoCard = () => {
@@ -45,7 +45,7 @@ const ProfileInfoCard = () => {
 
     const handelLogout = async () => {
         try{
-            const response = await axios.get(backendUrl+API_PATHS.AUTH.LOGOUT);
+            await axios.get(backendUrl+API_PATHS.AUTH.LOGOUT);
             localStorage.removeItem("user")
             dispatch(clearUser());
         

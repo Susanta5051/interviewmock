@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-import React, {useEffect, useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import { LuChevronDown, LuPin, LuPinOff, LuSparkles } from "react-icons/lu";
 import AIResponsePreview from "../../pages/InterviewPrep/Components/AIResponsePreview.tsx";
 type QuestionCardProps = {

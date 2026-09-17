@@ -9,7 +9,8 @@ import UserProvider from "./context/UserContext.tsx";
 import  {type AppDispatch } from "./redux/store.ts";
 import { setUser } from "./redux/userSlice.ts";
 
-
+export const backendUrl =
+  import.meta.env.VITE_BACKEND_URL || ("http://localhost:3000" as string);
 
 const App = () => {
 

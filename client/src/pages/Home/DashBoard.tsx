@@ -15,7 +15,7 @@ import Modal from "../../components/Modal.tsx";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../redux/store.ts";
-const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000" as string;
+import {backendUrl} from '../../App.tsx'
 axios.defaults.withCredentials = true;
 
 const Dashboard = () => {

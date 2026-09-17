@@ -4,7 +4,8 @@ import Input from "../../components/inputs/Input.tsx"
 import SpinnerLoader from '../../components/Loader/SpinnerLoader.tsx';
 import { API_PATHS } from '../../utils/apiPaths.ts';
 import axios from 'axios';
-const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000" as string;
+import {backendUrl} from '../../App.tsx'
+
 axios.defaults.withCredentials = true;
 
 const CreateSessionForm = () => {

@@ -1,4 +1,4 @@
-import React, { type MouseEventHandler } from 'react'
+import  { type MouseEventHandler } from 'react'
 
 const DeleteAlertContent = ({content, onDelete}:{content:string , onDelete:MouseEventHandler<HTMLButtonElement>}) => {
     return (

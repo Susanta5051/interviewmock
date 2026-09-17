@@ -15,16 +15,13 @@ import { API_PATHS } from "../utils/apiPaths.ts";
 import type { AppDispatch, RootState } from "../redux/store.ts";
 import { useDispatch, useSelector } from "react-redux";
 import { clearUser, setUser } from "../redux/userSlice.ts";
-import APP_FEATURES from "../utils/data.ts";
-import HERO_IMG from '../assets/banner.png'
 import logo from '../assets/logo.jpg'
-const backendUrl =
-  import.meta.env.VITE_BACKEND_URL || ("http://localhost:3000" as string);
+import {backendUrl} from '../App.tsx'
 axios.defaults.withCredentials = true;
 
 const LandingPage = () => {
   const user = useSelector((state: RootState) => state.users.user);
-  const { updateUser, setLoading } = useContext<any>(UserContext);
+  const { setLoading } = useContext<any>(UserContext);
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
 

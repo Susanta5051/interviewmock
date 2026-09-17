@@ -1,8 +1,4 @@
 import React, {createContext, useState,  } from "react";
-import axios from "axios";
-const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000" as string;
-axios.defaults.withCredentials = true;
-
 type UserContextType = {
     user: any;
     loading: boolean;

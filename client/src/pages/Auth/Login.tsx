@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -8,7 +7,7 @@ import Input from "../../components/inputs/Input.tsx";
 import { API_PATHS } from "../../utils/apiPaths.ts";
 import {UserContext} from '../../context/UserContext.tsx';
 import axios from "axios";
-const backendUrl= import.meta.env.VITE_BACKEND_URL || "http://localhost:3000" as string;
+import {backendUrl} from '../../App.tsx'
 axios.defaults.withCredentials= true
 
 const Login = ({ setCurrentPage }: { setCurrentPage: (page: string) => void }) => {

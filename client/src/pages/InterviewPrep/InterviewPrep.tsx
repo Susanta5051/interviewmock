@@ -4,7 +4,7 @@ import  { useState, useEffect } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
 import moment from "moment";
 import { AnimatePresence, motion } from "framer-motion";
-import { LuCircleAlert, LuCross, LuListCollapse } from "react-icons/lu";
+import { LuCircleAlert,  LuListCollapse } from "react-icons/lu";
 import SpinnerLoader from "../../components/Loader/SpinnerLoader.tsx";
 import { toast } from "react-hot-toast";
 import RoleInfoHeader from "./Components/RoleInfoHeader.tsx";
@@ -15,7 +15,7 @@ import AIResponsePreview from './Components/AIResponsePreview.tsx';
 import axios from 'axios'
 import DashboardLayout from '../../components/layouts/DashBoardLayout.tsx';
 import QuestionCard from '../../components/cards/QuestionCard.tsx';
-const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000" as string;
+import {backendUrl} from '../../App.tsx'
 axios.defaults.withCredentials = true;
 
 
