@@ -1,4 +1,4 @@
-import express, { Router, Request, Response } from "express";
+import express, { Router, type Request, type Response } from "express";
 import { registerUser, loginUser, getUserProfile, updateImage } from "../controllers/authController.ts";
 import { protect } from "../middlewares/authMiddlewares.ts";
 import upload from "../middlewares/uploadMiddlewares.ts";
