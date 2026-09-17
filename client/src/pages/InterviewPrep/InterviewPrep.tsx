@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 
 import  { useState, useEffect } from 'react';
-import { useNavigate, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import moment from "moment";
 import { AnimatePresence, motion } from "framer-motion";
 import { LuCircleAlert,  LuListCollapse } from "react-icons/lu";
