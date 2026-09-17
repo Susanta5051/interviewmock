@@ -20,7 +20,7 @@ export const createSession = async (
   res: Response
 ): Promise<void> => {
   try {
-    console.log("Received request body:", req.body);
+    // console.log("Received request body:", req.body);
     const { role, experience, topicsToFocus, description, questions } = req.body as CreateSessionBody;
     
     if (!req.user) {

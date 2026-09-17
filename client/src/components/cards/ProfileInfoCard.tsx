@@ -33,7 +33,6 @@ const ProfileInfoCard = () => {
                     {"Content-Type" : 'multipart/form-data'}
                 }
             )
-            console.log(response)
             localStorage.setItem("user",JSON.stringify(response.data.user))
             dispatch(setUser(response.data.user));
             setShowProfile(false)

@@ -9,12 +9,15 @@ import {backendUrl} from '../../App.tsx'
 import { useDispatch } from "react-redux";
 import type { AppDispatch } from "../../redux/store.ts";
 import { setUser } from "../../redux/userSlice.ts";
+import SpinnerLoader from "../../components/Loader/SpinnerLoader.tsx";
 axios.defaults.withCredentials= true
 
 const Login = ({ setCurrentPage }: { setCurrentPage: (page: string) => void }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
+    const [loading , setLoading] = useState<boolean>(false)
+  
   const dispatch = useDispatch<AppDispatch>();
     
   const navigate = useNavigate(); 
@@ -38,25 +41,28 @@ const Login = ({ setCurrentPage }: { setCurrentPage: (page: string) => void }) =
     
     setError("");
 
-
+    setLoading(true)
     try {
       const response = await axios.post(backendUrl+API_PATHS.AUTH.LOGIN, {
             email,
             password,
         },);
-        console.log(response)
         if (response.data.success){
           dispatch(setUser(response.data.user))
+          localStorage.setItem('user',JSON.stringify(response.data.user))
           navigate('/dashboard');
         }
       } catch (error: any) {
-      if (error.response && error.response.data.message) {
-        setError(error.response.data.message);
-      } else {
-        setError("Something went wrong. Please try again.");
-      }
-    }
-  };
+          if (error.response && error.response.data.message) {
+            setError(error.response.data.message);
+          } else {
+            setError("Something went wrong. Please try again.");
+          }
+        }
+        finally{
+          setLoading(false)
+        }
+      };
   
   return(
   <div className="w-[90vw] md:w-[33vw] p-7 flex flex-col justify-center">
@@ -84,7 +90,7 @@ const Login = ({ setCurrentPage }: { setCurrentPage: (page: string) => void }) =
 
         {error && <p className="text-red-500 text-xs pb-2.5">{error}</p>}
         <button type="submit" className="btn-primary">
-          LOGIN
+          {loading ? <SpinnerLoader /> : <p>LOGIN</p>}
           </button>
           <p className="text-[13px] text-slate-800 mt-3">
             Don't have an account?{" "}

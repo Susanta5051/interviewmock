@@ -25,7 +25,6 @@ export const generateInterviewQuestions = async (
   res: Response
 ): Promise<void> => {
   try {
-    console.log("Received request body:", req.body);
     const { role, experience, topicsToFocus, numberOfQuestions } = req.body as GenerateQuestionsBody;
 
     if (!role || !experience || !topicsToFocus || !numberOfQuestions) {
@@ -33,8 +32,6 @@ export const generateInterviewQuestions = async (
       return;
     }
     const prompt = questionAnswerPrompt(role, experience, topicsToFocus, numberOfQuestions);
-    // console.log("Prompt sent to AI:", prompt);
-    console.log("Prompt sent to AI:");
     
 
     const response = await ai.models.generateContent({

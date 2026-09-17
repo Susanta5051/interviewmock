@@ -29,7 +29,6 @@ const generateToken = (userId: any): string => {
 
 export const registerUser = async (req: Request, res: Response): Promise<void> => {
   try {
-    console.log("Registering user with data:",req.body);
     const { name, email, password, profileImageUrl } = req.body as RegisterBody;
     
     
@@ -57,7 +56,6 @@ export const registerUser = async (req: Request, res: Response): Promise<void> =
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     }); 
 
-    // console.log("User registered successfully:", user);
 
     res.status(201).json({
       success: true,
@@ -119,7 +117,6 @@ export const getUserProfile = async (
   res: Response
 ): Promise<void> => {
   try {
-    console.log("Fetching user profile for user:", req.user);
     if (!req.user) {
       res.status(401).json({ message: "Not authorized" });
       return;

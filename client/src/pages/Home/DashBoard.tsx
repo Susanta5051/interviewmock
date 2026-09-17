@@ -32,9 +32,7 @@ const Dashboard = () => {
 
   const fetchAllSessions = async () => {
     try {
-      console.log("req gone")
       const response = await axios.get(backendUrl + API_PATHS.SESSION.GET_ALL);
-      console.log(response)
       setSessions(response.data);
     } catch (error) {
       console.error("Error fetching session data:", error);

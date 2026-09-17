@@ -9,6 +9,7 @@ import {backendUrl} from '../../App.tsx'
 import { useDispatch } from "react-redux";
 import type { AppDispatch } from "../../redux/store.ts";
 import { setUser } from "../../redux/userSlice.ts";
+import SpinnerLoader from "../../components/Loader/SpinnerLoader.tsx";
 axios.defaults.withCredentials = true;
 
 const Signup = ({ setCurrentPage }: { setCurrentPage: React.Dispatch<React.SetStateAction<string>> }) => {
@@ -17,6 +18,7 @@ const Signup = ({ setCurrentPage }: { setCurrentPage: React.Dispatch<React.SetSt
   const [password, setPassword] = useState("");
   const dispatch = useDispatch<AppDispatch>()
   const [error, setError] = useState("");
+  const [loading , setloading] = useState<boolean>(false)
 
   const navigate = useNavigate();
 
@@ -26,7 +28,7 @@ const validateEmail = (email: string) =>
 
   const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    
 
     if (!fullName) {
       setError("Please enter full name.");
@@ -44,27 +46,31 @@ const validateEmail = (email: string) =>
     }
     
     setError("");
+    setloading(true)
     try {
-  const response = await axios.post(backendUrl + API_PATHS.AUTH.REGISTER, {
-    name: fullName,
-    email, 
-    password, 
-  });
+      const response = await axios.post(backendUrl + API_PATHS.AUTH.REGISTER, {
+        name: fullName,
+        email, 
+        password, 
+      });
 
+      if (response.data.success) {
+        localStorage.setItem('user',JSON.stringify(response.data.user))
+        dispatch(setUser(response.data.user))
+        navigate("/dashboard");
+      }
 
-  if (response.data.success) {
-  dispatch(setUser(response.data.user))
-  navigate("/dashboard");
-  }
-
- } catch (error:any) {
-      if (error.response && error.response.data.message) {
-        setError(error.response.data.message);
-      } else {
-        setError("Something went wrong. Please try again.");
+    } catch (error:any) {
+        if (error.response && error.response.data.message) {
+          setError(error.response.data.message);
+        } else {
+          setError("Something went wrong. Please try again.");
+        }
+      }
+      finally{
+        setloading(false);
       }
     }
-  };
   
   return <div className="w-[90vw] md:w-[33vw] p-7 flex flex-col justify-center">
     <h3 className="text-lg font-semibold text-black">Create an Account</h3>
@@ -104,7 +110,7 @@ const validateEmail = (email: string) =>
           {error && <p className="text-red-500 text-xs pb-2.5">{error}</p>}
           
           <button type="submit" className="btn-primary">
-            SIGN UP
+            {loading ? <SpinnerLoader />: <p>SIGN UP</p>}
             </button>
             
             <p className="text-[13px] text-slate-800 mt-3">
@@ -115,7 +121,7 @@ const validateEmail = (email: string) =>
               setCurrentPage("login");
             }}
             >
-              Login
+              login
               </button>
               </p>
             </form>

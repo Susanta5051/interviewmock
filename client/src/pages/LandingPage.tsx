@@ -44,7 +44,6 @@ const LandingPage = () => {
         const response = await axios.get(
           backendUrl + API_PATHS.AUTH.GET_PROFILE
         );
-        console.log("User authenticated", response.data);
         localStorage.setItem("user", JSON.stringify(response.data));
         dispatch(setUser(response.data));
       } catch (error) {
@@ -59,7 +58,6 @@ const LandingPage = () => {
   }, []);
 
   useEffect(() => {
-    console.log(user);
   }, [user]);
 
   return (
