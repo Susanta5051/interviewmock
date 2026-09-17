@@ -1,23 +1,23 @@
 
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
 import Input from "../../components/inputs/Input.tsx";
 
 import { API_PATHS } from "../../utils/apiPaths.ts";
-import {UserContext} from '../../context/UserContext.tsx';
 import axios from "axios";
 import {backendUrl} from '../../App.tsx'
+import { useDispatch } from "react-redux";
+import type { AppDispatch } from "../../redux/store.ts";
+import { setUser } from "../../redux/userSlice.ts";
 axios.defaults.withCredentials = true;
 
 const Signup = ({ setCurrentPage }: { setCurrentPage: React.Dispatch<React.SetStateAction<string>> }) => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
+  const dispatch = useDispatch<AppDispatch>()
   const [error, setError] = useState("");
 
-    const { updateUser } = useContext<any>(UserContext);
   const navigate = useNavigate();
 
 
@@ -53,7 +53,7 @@ const validateEmail = (email: string) =>
 
 
   if (response.data.success) {
-  updateUser(response.data.user);
+  dispatch(setUser(response.data.user))
   navigate("/dashboard");
   }
 

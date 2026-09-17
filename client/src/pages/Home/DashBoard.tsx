@@ -57,12 +57,14 @@ const Dashboard = () => {
 
   
   useEffect(() => {
+    console.log("triggered",user)
     fetchAllSessions();
   }, []);
   useEffect(() => {
-  }, [sessions,sessions.length,user]);
+  }, []);
 
   return (
+    <>
     <DashboardLayout>
       <div className="container mx-auto pt-4 pb-4 min-h-screen">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-7 pt-1 pb-6 px-4 md:px-0 ">
@@ -123,6 +125,7 @@ const Dashboard = () => {
         </div>
       </Modal>
     </DashboardLayout>
+    </>
   );
 };
 

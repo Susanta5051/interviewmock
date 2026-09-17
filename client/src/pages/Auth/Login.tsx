@@ -1,22 +1,22 @@
 
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
 import Input from "../../components/inputs/Input.tsx";
 // import { validateEmail } from "../../utils/helper";
 import { API_PATHS } from "../../utils/apiPaths.ts";
-import {UserContext} from '../../context/UserContext.tsx';
 import axios from "axios";
 import {backendUrl} from '../../App.tsx'
+import { useDispatch } from "react-redux";
+import type { AppDispatch } from "../../redux/store.ts";
+import { setUser } from "../../redux/userSlice.ts";
 axios.defaults.withCredentials= true
 
 const Login = ({ setCurrentPage }: { setCurrentPage: (page: string) => void }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
-
-  const { updateUser } = useContext<any>(UserContext);
-  
+  const dispatch = useDispatch<AppDispatch>();
+    
   const navigate = useNavigate(); 
   
   // Handle Login Form Submit
@@ -38,21 +38,17 @@ const Login = ({ setCurrentPage }: { setCurrentPage: (page: string) => void }) =
     
     setError("");
 
-    //Login API Call
-      console.log("req gone")
 
-try {
-  const response = await axios.post(backendUrl+API_PATHS.AUTH.LOGIN, {
-        email,
-        password,
-    },);
-
-  console.log(response)
-
-  if (response.data.success){
-    updateUser(response.data.user);
-    navigate('/dashboard');
-  }
+    try {
+      const response = await axios.post(backendUrl+API_PATHS.AUTH.LOGIN, {
+            email,
+            password,
+        },);
+        console.log(response)
+        if (response.data.success){
+          dispatch(setUser(response.data.user))
+          navigate('/dashboard');
+        }
       } catch (error: any) {
       if (error.response && error.response.data.message) {
         setError(error.response.data.message);
