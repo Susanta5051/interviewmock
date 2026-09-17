@@ -126,7 +126,7 @@ const LandingPage = () => {
         </div>
       </div>
 
-      <div className="w-full min-h-full relative z-10">
+      <div className="w-full min-h-full relative ">
         {/* <div>
           <section className="flex items-center justify-center -mt-36">
             <img
