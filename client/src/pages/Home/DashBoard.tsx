@@ -13,13 +13,11 @@ import CreateSessionForm from "./CreateSessionForm.tsx";
 import DeleteAlertContent from "../../components/DeleteAlertContent.tsx";
 import Modal from "../../components/Modal.tsx";
 import axios from "axios";
-import { useSelector } from "react-redux";
-import type { RootState } from "../../redux/store.ts";
+
 import {backendUrl} from '../../App.tsx'
 axios.defaults.withCredentials = true;
 
 const Dashboard = () => {
-   const user = useSelector((state:RootState)=>state.users.user)
   const navigate = useNavigate();
 
   const [openCreateModal, setOpenCreateModal] = useState(false);
@@ -55,7 +53,6 @@ const Dashboard = () => {
 
   
   useEffect(() => {
-    console.log("triggered",user)
     fetchAllSessions();
   }, []);
   useEffect(() => {

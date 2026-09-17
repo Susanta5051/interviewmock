@@ -74,7 +74,6 @@ export const generateConceptExplaination = async (
 ): Promise<void> => {
   try {
     const { question } = req.body as GenerateExplanationBody;
-
     if (!question) {
       res.status(400).json({ message: "Missing required fields" });
       return;
@@ -105,6 +104,7 @@ export const generateConceptExplaination = async (
     const data = JSON.parse(cleanedText);
     res.status(200).json(data);
   } catch (error: any) {
+    console.log(error)
     res.status(500).json({
       message: "Failed to generate explanation",
       error: error.message,

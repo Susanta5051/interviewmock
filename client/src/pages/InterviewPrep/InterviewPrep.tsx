@@ -68,7 +68,7 @@ const InterviewPrep = () => {
       if(response.data) {
         setExplanation(response.data);
       }
-    } catch (error) {
+    } catch (error:any) {
       setExplanation(null)
       setErrorMsg("Failed to generate explanation, Try again later" );
       console.error("Error:", error);
@@ -125,9 +125,7 @@ const InterviewPrep = () => {
       }
     } finally{
       setIsUpdateLoader(false);
-    }
-    
-  
+    }  
   };
 
   useEffect(() => {

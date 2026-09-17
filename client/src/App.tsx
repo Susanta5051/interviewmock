@@ -7,7 +7,7 @@ import UserProvider from "./context/UserContext.tsx";
 import Protected from "./pages/Auth/Protected.tsx";
 
 export const backendUrl =
-  import.meta.env.VITE_BACKEND_URL || ("http://localhost:3000" as string);
+  ("http://localhost:3000" as string);
 
 
 
