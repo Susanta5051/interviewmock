@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-import express, { Application} from "express";
+import express, {type Application} from "express";
 import cors from "cors";
 import path from "path";
 import cookieParser from "cookie-parser";

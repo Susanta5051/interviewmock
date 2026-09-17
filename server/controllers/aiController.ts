@@ -1,6 +1,6 @@
-import { Response } from "express";
+import type { Response } from "express";
 import { GoogleGenAI } from "@google/genai";
-import { AuthenticatedRequest } from "../middlewares/authMiddlewares.ts"; 
+import type { AuthenticatedRequest } from "../middlewares/authMiddlewares.ts"; 
 import { conceptExplainPrompt, questionAnswerPrompt } from "../utils/prompts.ts"; 
 import dotenv from "dotenv";
 dotenv.config();

@@ -1,7 +1,7 @@
-import { Response } from "express";
+import type { Response } from "express";
 import Session from "../models/Session.ts";
 import Question from "../models/Question.ts";
-import { AuthenticatedRequest } from "../middlewares/authMiddlewares.ts"; 
+import type { AuthenticatedRequest } from "../middlewares/authMiddlewares.ts"; 
 
 interface CreateSessionBody {
   role: string;

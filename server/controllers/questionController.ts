@@ -1,5 +1,5 @@
-import { Response } from "express";
-import { AuthenticatedRequest } from "../middlewares/authMiddlewares.ts";
+import type { Response } from "express";
+import type { AuthenticatedRequest } from "../middlewares/authMiddlewares.ts";
 import Question from "../models/Question.ts";
 import Session from "../models/Session.ts";
 
