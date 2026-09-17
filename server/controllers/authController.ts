@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import User from "../models/User.ts";
-import { AuthenticatedRequest } from "../middlewares/authMiddlewares.ts";
+import {type AuthenticatedRequest } from "../middlewares/authMiddlewares.ts";
 import uploadOnCloudinary from "../utils/cloudinary.ts";
 
 interface RegisterBody {
