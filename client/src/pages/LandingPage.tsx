@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearUser, setUser } from "../redux/userSlice.ts";
 import APP_FEATURES from "../utils/data.ts";
 import HERO_IMG from '../assets/banner.png'
+import logo from '../assets/logo.jpg'
 const backendUrl =
   import.meta.env.VITE_BACKEND_URL || ("http://localhost:3000" as string);
 axios.defaults.withCredentials = true;
@@ -73,7 +74,7 @@ const LandingPage = () => {
           {/* Header */}
           <header className="flex justify-between items-center mb-16 pt-3 px-2 pb-3  bg-white">
             <div className="text-xl text-black font-bold">
-              QnA.ai
+              <img src={logo} alt="" className=" h-10 sm:h-15"></img>
             </div>
             {user ? (
               <ProfileInfoCard />
