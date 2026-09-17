@@ -21,7 +21,6 @@ axios.defaults.withCredentials = true;
 
 
 const InterviewPrep = () => { 
-  const navigate = useNavigate()
   const { sessionId } = useParams();
   if(!sessionId) {
     toast.error("Session ID is missing in the URL");
