@@ -3,13 +3,13 @@ import express, { Application, Request, Response, NextFunction } from "express";
 import cors from "cors";
 import path from "path";
 import cookieParser from "cookie-parser";
-import connectDB from "./config/db";
+import connectDB from "./config/db.ts";
 
-import authRoutes from "./routes/authRoutes";
-import sessionRoutes from "./routes/sessionRoutes";
-import questionRoutes from "./routes/questionRoutes";
-import { protect } from "./middlewares/authMiddlewares";
-import { generateInterviewQuestions, generateConceptExplaination } from "./controllers/aiController";
+import authRoutes from "./routes/authRoutes.ts";
+import sessionRoutes from "./routes/sessionRoutes.ts";
+import questionRoutes from "./routes/questionRoutes.ts";
+import { protect } from "./middlewares/authMiddlewares.ts";
+import { generateInterviewQuestions, generateConceptExplaination } from "./controllers/aiController.ts";
 
 dotenv.config();
 

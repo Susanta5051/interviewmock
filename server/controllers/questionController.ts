@@ -1,7 +1,7 @@
 import { Response } from "express";
-import { AuthenticatedRequest } from "../middlewares/authMiddlewares";
-import Question from "../models/Question";
-import Session from "../models/Session";
+import { AuthenticatedRequest } from "../middlewares/authMiddlewares.ts";
+import Question from "../models/Question.ts";
+import Session from "../models/Session.ts";
 
 interface AddQuestionsBody {
   sessionId: string;

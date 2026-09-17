@@ -3,8 +3,8 @@ import {
     togglePinQuestion, 
     updateQuestionNote, 
     addQuestionsToSession 
-} from "../controllers/questionController";
-import { protect } from "../middlewares/authMiddlewares";
+} from "../controllers/questionController.ts";
+import { protect } from "../middlewares/authMiddlewares.ts";
 
 const router: Router = express.Router();
 

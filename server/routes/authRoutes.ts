@@ -1,7 +1,7 @@
 import express, { Router, Request, Response } from "express";
-import { registerUser, loginUser, getUserProfile, updateImage } from "../controllers/authController";
-import { protect } from "../middlewares/authMiddlewares";
-import upload from "../middlewares/uploadMiddlewares";
+import { registerUser, loginUser, getUserProfile, updateImage } from "../controllers/authController.ts";
+import { protect } from "../middlewares/authMiddlewares.ts";
+import upload from "../middlewares/uploadMiddlewares.ts";
 
 const router: Router = express.Router();
 

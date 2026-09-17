@@ -4,8 +4,8 @@ import {
     getSessionById, 
     getMySessions, 
     deleteSession 
-} from "../controllers/sessionController";
-import { protect } from "../middlewares/authMiddlewares";
+} from "../controllers/sessionController.ts";
+import { protect } from "../middlewares/authMiddlewares.ts";
 
 const router: Router = express.Router();
 
