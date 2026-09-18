@@ -35,7 +35,7 @@ const QuestionCard = ({
         setIsExpanded(!isExpanded);
     };
      return <>
-        <div className="bg-white/60 rounded-lg mb-4 overflow-hidden py-4 px-5 shadow-xl shadow-gray-100/70 border border-gray-100/60 group">
+        <div className="bg-white/60 rounded-lg mb-4 overflow-hidden py-4 px-5 shadow-xl shadow-black/40 border border-gray-100/60 group">
             <div className="flex items-start justify-between cursor-pointer">
                 <div className="flex items-start gap-3.5">
                     <span className="text-xs md:text-[15px] font-semibold text-gray-400 leading-[18px]">

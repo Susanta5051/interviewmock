@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { LuPlus } from "react-icons/lu";
-import { CARD_BG } from "../../utils/data";
+import { CARD_BG } from "../../utils/data.ts";
 import toast from "react-hot-toast";
 import DashboardLayout from "../../components/layouts/DashBoardLayout.tsx";
 import { useNavigate } from "react-router-dom";

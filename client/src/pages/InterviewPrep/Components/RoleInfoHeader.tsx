@@ -17,9 +17,9 @@ const RoleInfoHeader = ({
     description,
     lastUpdated,
 }: RoleInfoHeaderProps) => {
-    return <div className="bg-white relative px-5 bg-linear-to-r from-blue-500 to to-red-500">
+    return <div className="bg-white relative px-1 bg-linear-to-r from-blue-500 to to-red-500">
         <div className="container mx-auto px-5 md:px-0 ">
-            <div className="h-[200px] flex flex-col justify-center relative z-10 w-min px-10 my-5 rounded bg-white/60 shadow-2xl shadow-white border-0 hover:scale-105 ">
+            <div className="h-[200px] flex flex-col justify-center relative z-10  px-10 my-5 rounded bg-white/60 shadow-xl shadow-black/60 border-0 hover:scale-105 ">
                 <div className="flex items-start ">
                     <div className="flex-grow">
                         <div className="flex justify-between items-start">
