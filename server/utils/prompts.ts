@@ -3,7 +3,8 @@ export const questionAnswerPrompt = (
     role: string,
     experience: string | number,
     topicsToFocus: string | string[],
-    numberOfQuestions: number | string
+    numberOfQuestions: number | string,
+    previousQuestions:string[],
   ): string => `
       You are an AI trained to generate technical interview questions and answers.
   
@@ -12,6 +13,7 @@ export const questionAnswerPrompt = (
       - Candidate Experience: ${experience} years
       - Focus Topics: ${Array.isArray(topicsToFocus) ? topicsToFocus.join(", ") : topicsToFocus}
       - Write ${numberOfQuestions} interview questions.
+      - Except ${previousQuestions}.
       - For each question, generate a detailed but beginner-friendly answer.
       - If the answer needs a code example, add a small code block inside.
       - Keep formatting very clean.

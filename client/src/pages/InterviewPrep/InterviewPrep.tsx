@@ -94,7 +94,7 @@ const InterviewPrep = () => {
   const uploadMoreQuestions = async () => {
     try{
       setIsUpdateLoader(true);
-
+      const previousQuestions = sessionData?.questions?.map((questions:any)=>questions.question)
       const aiResponse = await axios.post(
         backendUrl + API_PATHS.AI.GENERATE_QUESTIONS,
         {
@@ -102,6 +102,7 @@ const InterviewPrep = () => {
           experience: sessionData?.experience,
           topicsToFocus: sessionData?.topicsToFocus,
           numberOfQuestions: 10, 
+          previousQuestions,
         }
 );
       const generatedQuestions = aiResponse.data;

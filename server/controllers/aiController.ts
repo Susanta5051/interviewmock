@@ -13,6 +13,7 @@ interface GenerateQuestionsBody {
   experience: string;
   topicsToFocus: string | string[];
   numberOfQuestions: number;
+  previousQuestions:string[];
 }
 
 interface GenerateExplanationBody {
@@ -25,13 +26,13 @@ export const generateInterviewQuestions = async (
   res: Response
 ): Promise<void> => {
   try {
-    const { role, experience, topicsToFocus, numberOfQuestions } = req.body as GenerateQuestionsBody;
+    const { role, experience, topicsToFocus, numberOfQuestions, previousQuestions } = req.body as GenerateQuestionsBody;
 
     if (!role || !experience || !topicsToFocus || !numberOfQuestions) {
       res.status(400).json({ message: "Missing required fields" });
       return;
     }
-    const prompt = questionAnswerPrompt(role, experience, topicsToFocus, numberOfQuestions);
+    const prompt = questionAnswerPrompt(role, experience, topicsToFocus, numberOfQuestions,previousQuestions);
     
 
     const response = await ai.models.generateContent({
